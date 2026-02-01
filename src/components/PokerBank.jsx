@@ -108,7 +108,7 @@ function PokerBank() {
         {/* Bank Input Section */}
         <div className="mb-6">
           <label className="block text-sm font-medium mb-2">
-            Total Physical Cash ($)
+            Total Bank Cash ($)
           </label>
           <input
             type="number"
@@ -227,9 +227,8 @@ function PokerBank() {
                     <tr key={player.id} className="hover:bg-gray-750">
                       <td className="px-4 py-3 font-medium">{player.name || 'Unnamed'}</td>
                       <td className="px-4 py-3 text-right">{formatCurrency(parseFloat(player.rawCount) || 0)}</td>
-                      <td className={`px-4 py-3 text-right font-medium ${
-                        (player.adjustment || 0) >= 0 ? 'text-green-400' : 'text-red-400'
-                      }`}>
+                      <td className={`px-4 py-3 text-right font-medium ${(player.adjustment || 0) >= 0 ? 'text-green-400' : 'text-red-400'
+                        }`}>
                         {formatCurrency(player.adjustment || 0)}
                       </td>
                       <td className="px-4 py-3 text-right font-semibold text-lg">
