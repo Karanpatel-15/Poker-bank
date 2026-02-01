@@ -6,7 +6,6 @@ function PokerBank() {
   const [players, setPlayers] = useState([])
   const [nextPlayerId, setNextPlayerId] = useState(1)
 
-  // Calculated values
   const totalOwed = useMemo(() => {
     return players.reduce((sum, player) => sum + (parseFloat(player.rawCount) || 0), 0)
   }, [players])
