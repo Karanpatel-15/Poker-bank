@@ -37,6 +37,13 @@ jobs:
       - name: Build
         run: npm run build
       
+      - name: Verify build output
+        run: |
+          echo "Build output contents:"
+          ls -la ./dist/
+          echo "Checking index.html:"
+          head -15 ./dist/index.html
+      
       - name: Add .nojekyll file
         run: touch ./dist/.nojekyll
       
