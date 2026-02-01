@@ -47,6 +47,22 @@ npm run preview
 5. Review the final payouts in the results table
 6. Use "Clear Session" to reset everything
 
+## Deployment
+
+This app is configured for GitHub Pages deployment. The site is live at: https://karanpatel-15.github.io/Poker-bank/
+
+### GitHub Pages Setup
+
+1. Go to your repository Settings → Pages
+2. Under "Build and deployment", select "GitHub Actions" as the source
+3. The workflow will automatically build and deploy on every push to the main branch
+
+### Manual Deployment
+
+If you prefer to deploy manually:
+1. Build the project: `npm run build`
+2. Push the `dist` folder to the `gh-pages` branch (or configure GitHub Pages to serve from the `dist` folder)
+
 ## Tech Stack
 
 - React 18
