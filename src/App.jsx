@@ -1,7 +1,12 @@
 import PokerBank from './components/PokerBank'
+import ErrorBoundary from './components/ErrorBoundary'
 
 function App() {
-  return <PokerBank />
+  return (
+    <ErrorBoundary>
+      <PokerBank />
+    </ErrorBoundary>
+  )
 }
 
 export default App

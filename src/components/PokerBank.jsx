@@ -108,7 +108,7 @@ function PokerBank() {
         {/* Bank Input Section */}
         <div className="mb-6">
           <label className="block text-sm font-medium mb-2">
-            Total Bank Cash ($)
+            Total Physical Cash ($)
           </label>
           <input
             type="number"
