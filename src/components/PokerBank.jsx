@@ -136,13 +136,13 @@ function PokerBank() {
 
           <div className="space-y-3">
             {players.map((player) => (
-              <div key={player.id} className="flex gap-2 items-center bg-gray-800 p-3 rounded-lg">
+              <div key={player.id} className="flex gap-1.5 sm:gap-2 items-center bg-gray-800 p-2 sm:p-3 rounded-lg">
                 <input
                   type="text"
                   value={player.name}
                   onChange={(e) => updatePlayer(player.id, 'name', e.target.value)}
                   placeholder="Player Name"
-                  className="flex-1 px-3 py-2 bg-gray-700 border border-gray-600 rounded text-white focus:outline-none focus:ring-2 focus:ring-blue-500 min-h-[44px]"
+                  className="flex-1 min-w-0 px-2 sm:px-3 py-2 bg-gray-700 border border-gray-600 rounded text-white focus:outline-none focus:ring-2 focus:ring-blue-500 min-h-[44px] text-sm sm:text-base"
                 />
                 <input
                   type="number"
@@ -150,12 +150,12 @@ function PokerBank() {
                   value={player.rawCount || ''}
                   onChange={(e) => updatePlayer(player.id, 'rawCount', e.target.value)}
                   placeholder="Chips"
-                  className="w-32 px-3 py-2 bg-gray-700 border border-gray-600 rounded text-white focus:outline-none focus:ring-2 focus:ring-blue-500 min-h-[44px]"
+                  className="w-20 sm:w-28 px-2 sm:px-3 py-2 bg-gray-700 border border-gray-600 rounded text-white focus:outline-none focus:ring-2 focus:ring-blue-500 min-h-[44px] text-sm sm:text-base"
                   step="0.01"
                 />
                 <button
                   onClick={() => removePlayer(player.id)}
-                  className="p-2 bg-red-600 hover:bg-red-700 rounded transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
+                  className="p-2 bg-red-600 hover:bg-red-700 rounded transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center flex-shrink-0"
                   aria-label="Remove player"
                 >
                   <Trash2 size={18} />
@@ -216,22 +216,22 @@ function PokerBank() {
               <table className="w-full">
                 <thead className="bg-gray-700">
                   <tr>
-                    <th className="px-4 py-3 text-left text-sm font-semibold">Player</th>
-                    <th className="px-4 py-3 text-right text-sm font-semibold">Raw Count</th>
-                    <th className="px-4 py-3 text-right text-sm font-semibold">Adjustment</th>
-                    <th className="px-4 py-3 text-right text-sm font-semibold">Final Payout</th>
+                    <th className="px-2 sm:px-4 py-2 sm:py-3 text-left text-xs sm:text-sm font-semibold">Player</th>
+                    <th className="px-2 sm:px-4 py-2 sm:py-3 text-right text-xs sm:text-sm font-semibold">Raw Count</th>
+                    <th className="px-2 sm:px-4 py-2 sm:py-3 text-right text-xs sm:text-sm font-semibold">Adjustment</th>
+                    <th className="px-2 sm:px-4 py-2 sm:py-3 text-right text-xs sm:text-sm font-semibold">Final Payout</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-700">
                   {players.map((player) => (
                     <tr key={player.id} className="hover:bg-gray-750">
-                      <td className="px-4 py-3 font-medium">{player.name || 'Unnamed'}</td>
-                      <td className="px-4 py-3 text-right">{formatCurrency(parseFloat(player.rawCount) || 0)}</td>
-                      <td className={`px-4 py-3 text-right font-medium ${(player.adjustment || 0) >= 0 ? 'text-green-400' : 'text-red-400'
+                      <td className="px-2 sm:px-4 py-2 sm:py-3 font-medium text-sm sm:text-base">{player.name || 'Unnamed'}</td>
+                      <td className="px-2 sm:px-4 py-2 sm:py-3 text-right text-sm sm:text-base">{formatCurrency(parseFloat(player.rawCount) || 0)}</td>
+                      <td className={`px-2 sm:px-4 py-2 sm:py-3 text-right font-medium text-sm sm:text-base ${(player.adjustment || 0) >= 0 ? 'text-green-400' : 'text-red-400'
                         }`}>
                         {formatCurrency(player.adjustment || 0)}
                       </td>
-                      <td className="px-4 py-3 text-right font-semibold text-lg">
+                      <td className="px-2 sm:px-4 py-2 sm:py-3 text-right font-semibold text-base sm:text-lg">
                         {formatCurrency(player.finalPayout || (parseFloat(player.rawCount) || 0))}
                       </td>
                     </tr>
@@ -239,12 +239,12 @@ function PokerBank() {
                 </tbody>
                 <tfoot className="bg-gray-700">
                   <tr>
-                    <td className="px-4 py-3 font-bold">Total</td>
-                    <td className="px-4 py-3 text-right font-bold">{formatCurrency(totalOwed)}</td>
-                    <td className="px-4 py-3 text-right font-bold">{formatCurrency(
+                    <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-sm sm:text-base">Total</td>
+                    <td className="px-2 sm:px-4 py-2 sm:py-3 text-right font-bold text-sm sm:text-base">{formatCurrency(totalOwed)}</td>
+                    <td className="px-2 sm:px-4 py-2 sm:py-3 text-right font-bold text-sm sm:text-base">{formatCurrency(
                       players.reduce((sum, p) => sum + (p.adjustment || 0), 0)
                     )}</td>
-                    <td className="px-4 py-3 text-right font-bold text-lg">{formatCurrency(
+                    <td className="px-2 sm:px-4 py-2 sm:py-3 text-right font-bold text-base sm:text-lg">{formatCurrency(
                       players.reduce((sum, p) => sum + (p.finalPayout || (parseFloat(p.rawCount) || 0)), 0)
                     )}</td>
                   </tr>
